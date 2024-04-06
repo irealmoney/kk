@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title> <%- defineContent('title') || 'آژانس تبلیغاتی ما'  %></title>
+        <meta http-equiv="Content-Language" content="fa-IR" />
+        <meta name="Rating" content="General" />
+        <meta name="Revisit-After" content="15 Days" />
+        <meta name="Expires" content="Never" />
+        <meta name="Distribution" content="Global" />
+        <meta name="Doc-Class" content="Living Document" />
+        <meta property="og:image" content="og.png" />
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="HiTechno" />
+        <meta property="og:url" content="index.html" />
+        <meta property="og:type" content="website" />
+        <link rel='dns-prefetch' href='http://s.w.org/' />
+        <link rel="canonical" href="index.html" />
+        <link rel='shortlink' href='index.html' />
+        <link rel='stylesheet' id='megamenu-css'  href='/css/megano.css' type='text/css' media='all' />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel='stylesheet' id='dashicons-css'  href='/css/dashicons.min.css' type='text/css' media='all' />
+        <link rel="stylesheet" href="/css/all.min.css" type="text/css">
+        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+        <link rel="stylesheet" type="text/css" href="/hitechno//css/stackicons-social.css" media="all"/>
+        <link rel='stylesheet' id='bootstrap-css'  href='/css/bootstrap.min.css' type='text/css' media='all' />
+        <link rel='stylesheet' id='owl-carousel-css'  href='/css/owl.carousel.min.css' type='text/css' media='all' />
+        <link rel='stylesheet' id='animate-css-css'  href='/css/animate.min.css' type='text/css' media='all' />
+        <link rel='stylesheet' id='hitechno-css'  href='/css/MA.css' type='text/css' media='all' />
+        <link rel='stylesheet' id='hitechno-responsive-css'  href='/css/responsive-style.css' type='text/css' media='all' />
+        <link rel='stylesheet' id='hitechno-style-css'  href='/css/style.css' type='text/css' media='all' />
+        <link rel='stylesheet' id='js_composer_front-css'  href='/css/js_composer.min.css' type='text/css' media='all' />
+        <link rel='stylesheet' id='color-schemes-css'  href='/css/color-schemes.css' type='text/css' media='all' />
+        <link rel='stylesheet' id='color-schemes-inline-css' href='/css/other-styles.css' type='text/css'/>
+        <script type="text/javascript" src="/js/all.js"></script>
+        <script type='text/javascript' src='/js/jquery.js'></script>
+        <script type='text/javascript' src='/js/jquery-migrate.min.js'></script>
+        <script type='text/javascript' src='/js/micromodal.min.js'></script>
+        <link rel="icon" href="/images/logo1.png" sizes="32x32" />
+        <link href="https://harvesthq.github.io/chosen/chosen.css" rel="stylesheet"/>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script src="https://harvesthq.github.io/chosen/chosen.jquery.js"></script>
+      
+     
+     
+        <!-- css.gg -->
+     <link href="https://css.gg/css" rel="stylesheet" />
+     
+     <!-- UNPKG -->
+     <link href="https://unpkg.com/css.gg/icons/icons.css" rel="stylesheet" />
+     
+     <!-- JSDelivr -->
+     <link
+       href="https://cdn.jsdelivr.net/npm/css.gg/icons/icons.css"
+       rel="stylesheet"/>
+    </head>
+<body>
+
+
+
+
+
+
+
+
+
+
+
+<div class="main-dashboard">
+
+    <div class="sidebar-panel">
+
+        <div class="sidebar-title"><h2>پنل ادمین</h2></div>
+        <div class="sidebar-pages">
+            <ul>
+                <li><a href="/admin/panel">آمار سایت<img src="/images/chart-histogram.svg" width="16" height="16" alt="status"></a></li>
+                <li><a href="/admin/panel/users">مدیریت کاربران  <i class="fas fa-solid fa-square-poll-vertical" style="color: #ffffff;"></i></a></li>
+                <li><a href="/admin/panel/users/permissions">دسترسی ها <i class="fas fa-solid fa-universal-access" style="color: #ffffff;"></i></a></li>
+                <li><a href="/admin/panel/manageposts">پست های آپلود شده<img src="/images/move-to-folder.svg" width="16" height="16" alt="status"></a></li>
+                <li><a href="/admin/panel/addpost">افزودن پست<img src="/images/add-document.svg" width="16" height="16" alt="status"></a></li>
+                <li><a href="/admin/panel/user-tickets">تیکت ها<img src="/images/layer-plus.svg" width="16" height="16" alt="status"></a></li>
+            </ul>
+        </div>
+        <div class="logout-btn">
+            <a href="/">خروج <img src="/images/sign-out-alt.svg" width="16" height="16" alt="logout"></a>
+        </div>
+
+    </div>
+    <div class="dashboard">
+
+        
+
+        <%- body %>
+        
+
+
+
+
+
+    </div>
+</div>
+
+
+
+
+<script>
+    function tabopen(evt, tabname) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+      tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablink");
+    for (i = 0; i < tablinks.length; i++) {
+      tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(tabname).style.display = "block";
+    evt.currentTarget.className += " active";
+  }
+  
+
+  document.getElementById("defaultOpen").click();
+</script>
+
+
+
+
+
+
+
+<!-- Wrapper End -->
+<script type='text/javascript' src='/js/bootstrap.min.js'></script>
+<script type='text/javascript' src='/js/jquery.sticky.js'></script>
+<script type='text/javascript' src='/js/owl.carousel.min.js'></script>
+<script type='text/javascript' src='/js/isotope.pkgd.min.js'></script>
+<script type='text/javascript' src='/js/hoverIntent.min.js'></script>
+<script type='text/javascript' src='/js/animatescroll.min.js'></script>
+<script type='text/javascript' src='/js/parallax.min.js'></script>
+<script type='text/javascript' src='/js/scrollreveal.min.js'></script>
+<script type='text/javascript' src='/js/core.mind41d.js?'></script>
+<script type='text/javascript' src='/js/mouse.min.js'></script>
+<script type='text/javascript' src='/js/slider.min.js'></script>
+<script type='text/javascript' src='/js/main.js'></script>
+<script src="/js/dist_feather.min.js"></script>
+<script type='text/javascript'>
+    /* <![CDATA[ */
+    var megamenu = {
+        "timeout": "30", "interval":
+
+            "100"
+    };
+    /* ]]> */
+</script>
+
+<script type='text/javascript' src='/js/maxmegamenu.js'></script>
+<script type='text/javascript' src='/js/front.js'></script>
+<script type='text/javascript' src='/js/js_composer_front.min.js'></script>
+<script type='text/javascript' src='/js/waypoints.min.js'></script>
+<script type='text/javascript' src='/js/jquery.counterup.js'></script>
+
+</body>
+</html>

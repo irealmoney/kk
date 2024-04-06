@@ -1,0 +1,71 @@
+<div id="addpost" class="tabcontent">
+    <form class="addpost-form" method="POST" action="/admin/panel/manageposts/<%= post._id %>?_method=put" enctype="multipart/form-data" novalidate>
+
+
+        <%- include(viewPath('layouts/error-messages')) -%>
+
+                                <h2>ویرایش پست</h2>
+        <div class="inp-c2">
+            <div class="input-box1">
+
+            </div>
+        </div>
+        <div class="inp-c2">
+            <div class="input-box1">
+
+                <label for="billboardTitle">عنوان :</label>
+                <input type="text" id="billboardTitle" name="title" value="<%= post.title %>">
+
+                <label for="location-link">لینک لوکیشن سازه را وارد کنید (با فرمت iframe):</label>
+                <input type="text" id="location-link" name="location" value="<%= post.location %>">
+
+                <label for="billboard-type">نوع تابلو :</label>
+                <select name="type" id="billboard-type">
+                    <option value="استوری برد" <%= post.type === 'استوری برد' ? 'selected' : '' %> >استوری برد</option>
+                    <option value="بیلبورد" <%= post.type === 'بیلبورد' ? 'selected' : '' %> >بیلبورد</option>
+                    <option value="عرشه پل" <%= post.type === 'عرشه پل' ? 'selected' : '' %> >عرشه پل</option>
+                </select>
+
+                <label for="billboard-status">وضعیت تابلو :</label>
+                <select name="status" id="billboard-status">
+                    <option value="قابل اکران" <%= post.status === 'قابل اکران' ? 'selected' : '' %> >قابل اکران</option>
+                    <option value="در حال اکران" <%= post.status === 'در حال اکران' ? 'selected' : '' %> >در حال اکران</option>
+                </select>
+            </div>
+
+            <div class="input-box2">
+
+                <label for="billboard-address">آدرس سازه را وارد کنید :</label>
+                <input type="text" id="billboard-address" name="address" value="<%= post.address %>">
+
+                <label for="billboard-code">کد تابلو را وارد کنید :</label>
+                <input type="text" id="billboard-code" name="code" value="<%= post.code %>">
+
+                <label for="billboard-code">تگ پست را وارد کنید</label>
+                <input type="text" id="billboard-tags" name="tags" value="<%= post.tags %>">
+
+                
+                <label for="billboard-pic">عکس سازه را انتخاب کنید :</label>
+                <input type="file" id="billboard-pic" name="image">
+            </div>
+
+        </div>
+            <div class="radio-image-bar">
+                <% Object.entries(post.images).forEach(([size , image]) => { %>
+                    <div class="col-sm-2">
+                        <label class="control-label">
+                            <%= size %>
+                            <input type="radio" name="imageThumb" value="<%= image %>" checked="">
+                            <a href="<%= image %>" target="_blank"><img src="<%= image %>" width="100%"></a>
+                        </label>
+                    </div>
+                <% }) %>
+            </div>
+        <div class="inp-c3">
+            <div class="input-box3">
+                <a href="/admin/panel/manageposts">بازگشت</a>
+                <input type="submit" id="addpost-submit-btn" name="addpost_btn" value="ثبت">
+            </div>
+        </div>
+    </form>
+</div>

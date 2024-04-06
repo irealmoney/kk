@@ -1,0 +1,49 @@
+<div id="manage" class="tabcontent">
+
+    <%- include(viewPath('layouts/error-messages')) -%>
+
+    <div class="permission--container">
+        <div class="permission--header">
+            <div class="permission--header--title">
+                <h3>  افزودن سطح جدید </h3>
+            </div>
+            <div class="permission--header--btn">
+                <a class="btn btn-error btn-sm bc-red" href="/admin/panel/users/permissions"> لیست دسترسی ها </a>
+                <a class="btn btn-error btn-sm bc-red" href="/admin/panel/users/roles">لیست سطوح دسترسی</a>
+            </div>
+        </div>
+
+
+        <form class="add--permission" action="/admin/panel/users/<%= user.id %>/storeaddrole?_method=PUT" method="post">
+            <div class="inp--box1">
+                <label for="permission--name">  نام و ایمیل کاربر  :  </label>
+                <input type="text" name="name" id="permission--name" disabled value="<%= user.username + '   -   ' + user.email %>">
+            </div>
+            <div class="inp--box1">
+                <label for="permission--lists">      دسته بندی  :    </label>
+                <select multiple name="roles" data-placeholder="example" class="chosen-select">
+                    <% roles.forEach(role => {%>
+                    <option value="<%= role._id %>" <%= old('roles' , user.roles).indexOf(role._id) !== -1 ? 'selected' : '' %> > <%=  role.lable %> </option>    
+                    <% }) %>
+                </select>
+            </div>
+
+            <input class="btn btn-success btn-sm bc-green" type="submit" value="تایید" >
+        </form>
+    </div>
+
+</div>
+<script>
+    $(".chosen-select").chosen();
+
+    $(".chosen-select").on('change', function (event,el) {
+    var selected_element = $(".chosen-select option:contains("+el.selected+")");
+    var selected_value  = selected_element.val();
+    var parent_optgroup = selected_element.closest('optgroup').attr('label');
+    var parent_optgroup_class = selected_element.closest('optgroup').attr('class');
+    $(".search-choice:last > span").css("background-color", parent_optgroup_class);
+    selected_element.text(parent_optgroup+' - '+selected_value);
+    
+    //$(selected_element).addClass(`${parent_optgroup_class}`);
+    });
+  </script>

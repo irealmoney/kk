@@ -1,0 +1,47 @@
+<div id="manage" class="tabcontent">
+
+
+    <div class="permission--container">
+
+        <div class="permission--header">
+            <div class="permission--header--title">
+                <h3>لیست دسترسی ها </h3>
+            </div>
+            <div class="permission--header--btn">
+                <a class="btn btn-success btn-sm bc-green" href="/admin/panel/users/permissions/set">ایجاد دسترسی</a>
+                <a class="btn btn-success btn-sm bc-green" href="/admin/panel/users/roles">تنظیم سطوح دسترسی</a>
+            </div>
+        </div>
+
+        <div class="table-count-permission">
+            <table>
+                <thead>
+                    <tr>
+                        <td>عنوان دسترسی</td>
+                        <td>توضیح</td>
+                        <td>تنظیمات</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <%permissions.docs.forEach(permission => {%>
+                        <tr>
+                            <td><%= permission.name %></td>
+                            <td><%= permission.lable %></td>
+                            <td>
+                                <form class="post-edit-rmv" action="/admin/panel/users/permissions/<%= permission._id %>?_method=DELETE" method="post">
+                                    <input type="hidden" name="_method" value="delete">
+                                    <a href="/admin/panel/users/permissions/<%= permission._id %>/edit">ویرایش</a>
+                                    <button type="submit">حذف</button>
+                                </form>
+                            </td>
+                        </tr>
+                    <%})%>
+                </tbody>
+            </table>
+            <%- include(viewPath('layouts/pagination') , {pages : permissions.pages , page : permissions.page}) -%>
+    
+        </div>
+
+    </div>
+
+</div>

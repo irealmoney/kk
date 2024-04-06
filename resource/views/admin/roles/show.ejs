@@ -1,0 +1,47 @@
+<div id="manage" class="tabcontent">
+
+
+    <div class="permission--container">
+
+        <div class="permission--header">
+            <div class="permission--header--title">
+                <h3>لیست سطوح دسترسی </h3>
+            </div>
+            <div class="permission--header--btn">
+                <a class="btn btn-error btn-sm bc-red" href="/admin/panel/users/permissions">لیست دسترسی ها</a>
+                <a class="btn btn-error btn-sm bc-red" href="/admin/panel/users/roles/set">تنظیم سطوح دسترسی</a>
+            </div>
+        </div>
+
+        <div class="table-count-permission">
+            <table>
+                <thead>
+                    <tr>
+                        <td>عنوان سطح دسترسی</td>
+                        <td>توضیح</td>
+                        <td>تنظیمات</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <%roles.docs.forEach(role => {%>
+                        <tr>
+                            <td><%= role.name %></td>
+                            <td><%= role.lable %></td>
+                            <td>
+                                <form class="post-edit-rmv" action="/admin/panel/users/roles/<%= role._id %>?_method=DELETE" method="post">
+                                    <input type="hidden" name="_method" value="delete">
+                                    <a href="/admin/panel/users/roles/<%= role._id %>/edit">ویرایش</a>
+                                    <button type="submit">حذف</button>
+                                </form>
+                            </td>
+                        </tr>
+                    <%})%>
+                </tbody>
+            </table>
+            <%- include(viewPath('layouts/pagination') , {pages : roles.pages , page : roles.page}) -%>
+    
+        </div>
+
+    </div>
+
+</div>

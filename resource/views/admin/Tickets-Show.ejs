@@ -1,0 +1,13 @@
+<div id="addlist" class="tabcontent">
+
+    <div class="tickets-container">
+
+        <%ticket.docs.forEach(ticket => {%>
+            <div class="ticket-user">
+                
+                <label for="">عنوان :</label><p><%= ticket.title %></p>
+                <label for="">متن تیکت :</label><p><%= ticket.comment %></p>
+            </div>
+        <% }) %>
+    </div>
+</div>

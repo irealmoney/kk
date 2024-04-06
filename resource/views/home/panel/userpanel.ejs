@@ -1,0 +1,196 @@
+<div class="tabs" data-tab-group="os">
+    <div role="tablist" aria-label="Install-f">
+        <button role="tab" aria-selected="true" aria-controls="deb-tab-install-filebeat" id="deb-install-filebeat">
+            اطلاعات کاربری
+        </button>
+        <button role="tab" aria-selected="false" aria-controls="rpm-tab-install-filebeat" id="rpm-install-filebeat"
+            tabindex="-1">
+            سفارشات
+        </button>
+        <button role="tab" aria-selected="false" aria-controls="mac-tab-install-filebeat" id="mac-install-filebeat"
+            tabindex="-1">
+            اعلانات
+        </button>
+
+    </div>
+    <div tabindex="0" role="tabpanel" id="deb-tab-install-filebeat" aria-labelledby="deb-install-filebeat">
+
+
+
+        <div class="main-dash">
+
+
+            <h2>اطلاعات کاربری شما</h2>
+
+            <div class="information-box">
+                <form class="information-form" action="/user-panel/<%= auth.user.id %>/edit?_method=put" method="post">
+                    <div class="show-information">
+                        <ul>
+                            <li>
+                                <label for="username">نام کاربری </label>
+                                <input type="text" id="username" name="username" value="<%= auth.user.username %>" >
+                            </li>
+                            <li>
+                                <label for="email">ایمیل</label> 
+                                <input type="text" id="email" disabled name="email" value="<%= auth.user.email %>" >
+                                <p style="color: red;">تغییر ایمیل امکان پذیر نمیباشد</p>
+                            </li>
+
+                        </ul>
+
+                        <ul>
+
+                            <li class="dateju"> 
+                                <label for="createdat">  تاریخ عضویت </label>
+                                <p><%= date(auth.user.createdAt).format('jYYYY/jM/jD') %></p>
+                            </li>
+                            <li class="dateju"> 
+                                <label for="createdat">  آخرین تغییرات  </label>
+                                <p><%= date(auth.user.updatedAt).format('jYYYY/jM/jD') %></p>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="submit-recaptcha">
+                        <%- recaptcha %>
+
+                        <input type="submit" value="تغییر اطلاعات">
+                    </div>
+                </form>
+
+            </div>
+
+        </div>
+
+
+
+
+
+
+
+
+    </div>
+    <div tabindex="0" role="tabpanel" id="rpm-tab-install-filebeat" aria-labelledby="rpm-install-filebeat" hidden="">
+
+        
+
+            <div class="order-section">
+                
+                <ul>
+
+
+                    <li><label for="">  کد سفارش :</label><p></p></li>
+
+                    <li><label for="">تاریخ پرداخت :</label><p></p></li>
+
+                    <li class="product--cart"> 
+                        <a>کد محصول : </a>
+                        <a> نام محصول : </a>
+                        <a> مبلغ  : </a>
+                    </li>
+
+
+
+                </ul>
+
+        </div>
+
+        
+
+    </div>
+    <div tabindex="0" role="tabpanel" id="mac-tab-install-filebeat" aria-labelledby="mac-install-filebeat" hidden="">
+        ++++
+
+        include::install.asciidoc[tag=mac]
+
+        ++++
+    </div>
+
+</div>
+
+
+<script>
+    window.addEventListener("DOMContentLoaded", () => {
+        const tabs = document.querySelectorAll('[role="tab"]');
+        const tabList = document.querySelector('[role="tablist"]');
+        // Add a click event handler to each tab
+        tabs.forEach(tab => {
+            tab.addEventListener("click", changeTabs);
+        });
+        // Enable arrow navigation between tabs in the tab list
+        let tabFocus = 0;
+        tabList.addEventListener("keydown", e => {
+            // Move right
+            if (e.keyCode === 39 || e.keyCode === 37) {
+                tabs[tabFocus].setAttribute("tabindex", -1);
+                if (e.keyCode === 39) {
+                    tabFocus++;
+                    // If we're at the end, go to the start
+                    if (tabFocus >= tabs.length) {
+                        tabFocus = 0;
+                    }
+                    // Move left
+                } else if (e.keyCode === 37) {
+                    tabFocus--;
+                    // If we're at the start, move to the end
+                    if (tabFocus < 0) {
+                        tabFocus = tabs.length - 1;
+                    }
+                }
+                tabs[tabFocus].setAttribute("tabindex", 0);
+                tabs[tabFocus].focus();
+            }
+        });
+    });
+
+    function setActiveTab(target) {
+        const parent = target.parentNode;
+        const grandparent = parent.parentNode;
+        // console.log(grandparent);
+        // Remove all current selected tabs
+        parent
+            .querySelectorAll('[aria-selected="true"]')
+            .forEach(t => t.setAttribute("aria-selected", false));
+        // Set this tab as selected
+        target.setAttribute("aria-selected", true);
+        // Hide all tab panels
+        grandparent
+            .querySelectorAll('[role="tabpanel"]')
+            .forEach(p => p.setAttribute("hidden", true));
+        // Show the selected panel
+        grandparent.parentNode
+            .querySelector(`#${target.getAttribute("aria-controls")}`)
+            .removeAttribute("hidden");
+    }
+
+    function changeTabs(e) {
+        // get the containing list of the tab that was just clicked
+        const tabList = e.target.parentNode;
+
+        // get all of the sibling tabs
+        const buttons = Array.apply(null, tabList.querySelectorAll('button'));
+
+        // loop over the siblings to discover which index thje clicked one was
+        const { index } = buttons.reduce(({ found, index }, button) => {
+            if (!found && buttons[index] === e.target) {
+                return { found: true, index };
+            } else if (!found) {
+                return { found, index: index + 1 };
+            } else {
+                return { found, index };
+            }
+        }, { found: false, index: 0 });
+
+        // get the tab container
+        const container = tabList.parentNode;
+        // read the data-tab-group value from the container, e.g. "os"
+        const { tabGroup } = container.dataset;
+        // get a list of all the tab groups that match this value on the page
+        const groups = document.querySelectorAll('[data-tab-group=' + tabGroup + ']');
+
+        // for each of the found tab groups, find the tab button at the previously discovered index and select it for each group
+        groups.forEach((group) => {
+            const target = group.querySelectorAll('button')[index];
+            setActiveTab(target);
+        });
+    }
+</script>

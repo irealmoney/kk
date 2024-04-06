@@ -1,0 +1,37 @@
+<% if(auth.check) { %>
+    <div class="puff-in-center comment-card">
+        <form class="comment-form" action="/comment" method="post">
+            <div class="form-title">
+                <h3>ثبت دیدگاه</h3>
+            </div>
+            <div class="comment-body">
+                <%- include(viewPath('layouts/error-messages')) -%>
+                <div class="comment-input-box">
+                    <input type="hidden" name="<%= subject.constructor.modelName.toLowerCase() %>" value="<%= post._id %>">
+                    <label for="cm_title">عنوان :</label>
+                    <input type="text" name="title" id="cm_title">
+                </div>
+
+                <div class="comment-area-box">
+                    <label for="comment_area">متن :</label>
+                    <textarea name="comment" id="comment_area" placeholder="نظرات  خود را بنویسید ..." cols="30" rows="10"></textarea>
+                </div>
+                <div class="comment-btn-box">
+                    <input type="submit" value="ارسال" >
+                </div>
+            </div>
+
+        </form>
+    </div>
+<% } %>
+
+
+
+
+<div class="user-comments">
+
+
+</div>
+
+
+

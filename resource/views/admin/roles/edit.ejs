@@ -1,0 +1,56 @@
+<div id="manage" class="tabcontent">
+
+    <%- include(viewPath('layouts/error-messages')) -%>
+
+    <div class="permission--container">
+        <div class="permission--header">
+            <div class="permission--header--title">
+                <h3>  ایجاد دسترسی  </h3>
+            </div>
+            <div class="permission--header--btn">
+                <a class="btn btn-error btn-sm bc-red" href="/admin/panel/users/roles"> لیست  سطوح دسترسی </a>
+            </div>
+        </div>
+
+
+        <form class="add--permission" action="/admin/panel/users/roles/<%= role._id %>?_method=PUT" method="post">
+            <div class="inp--box1">
+                <label for="permission--name">     عنوان دسترسی  :  </label>
+                <input type="text" name="name" id="permission--name" value="<%= old('name' , role.name)%>" >
+            </div>
+            <div class="inp--box1">
+                <label for="permission--lable">     طرح دسترسی   :   </label>
+                <input type="text" name="lable" id="permission--lable" value="<%= old('lable' , role.lable)%>" >
+            </div>
+            <div class="inp--box1">
+                <label for="permission--lists">      دسته بندی  :    </label>
+                <select multiple name="permissions" data-placeholder="example" class="chosen-select">
+                    <% permission.forEach(per => {%>
+                    <option value="<%= per._id %>" <%= old('permissions' , role.permissions).indexOf(per._id) !== -1 ? 'selected' : '' %> > <%= per.lable %> </option>    
+                    <% }) %>
+                </select>
+            </div>
+            <div class="inp--box2">
+                <input  type="submit" value="ویرایش" >
+                <a href="/admin/panel/users/roles">بازگشت</a>
+            </div>
+        </form>
+    </div>
+
+</div>
+
+
+<script>
+    $(".chosen-select").chosen();
+
+    $(".chosen-select").on('change', function (event,el) {
+    var selected_element = $(".chosen-select option:contains("+el.selected+")");
+    var selected_value  = selected_element.val();
+    var parent_optgroup = selected_element.closest('optgroup').attr('label');
+    var parent_optgroup_class = selected_element.closest('optgroup').attr('class');
+    $(".search-choice:last > span").css("background-color", parent_optgroup_class);
+    selected_element.text(parent_optgroup+' - '+selected_value);
+    
+    //$(selected_element).addClass(`${parent_optgroup_class}`);
+    });
+  </script>

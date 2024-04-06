@@ -1,0 +1,63 @@
+
+
+<div class="container">
+    
+
+    <div class="bill-info-container">
+
+        <div class="header-post-info">
+            <img class="roll-in-blurred-left" src="<%= post.images[1080] %>" alt="">
+            <div class="header-title">
+                <h2><%= post.typeOfPosts() %></h2>
+
+                <div class="textbar-body-single-page">
+                    <ul>
+                        <li class="address-flex">موقعیت سازه :  <span style="color: red;"><%= post.address %></span> </li>
+
+                    </ul>
+                    <div class="status-single-page">
+
+                        <table>
+                            <tr>
+                                <th>نوع سازه</th>
+                                <th>کد تابلو</th>
+                                <th>طول</th>
+                                <th>عرض</th>
+                            </tr>
+                            <tr>
+                                <td><%= post.typeOfPosts() %></td>
+                                <td><%= post.code %></td>
+                                <td><%= post.width %></td>
+                                <td><%= post.height %></td>
+                            </tr>
+                        </table>
+                    </div>
+                    <ul class="status-value">
+                        <li>وضعیت : <%= post.statusValue() %></li>
+                    </ul> 
+                    <ul class="status-align">
+                        <% if(post.statusValue() === 'در حال اکران') { %>
+                            <li> برند در حال اکران : <span style="color: red;"><%= post.title %></span></li>
+                        <% } else { %>
+                            <li> <span style="color: #02ca4f">تابلو خالی است  </span> </li>
+                        <% } %>
+                    </ul>
+                    <span>آخرین آپدیت : <%= post.updateAt %></span>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="portals-btn">
+            <a class="text-focus-in single-page-portal-location-btn" href="<%= post.location %>">لوکیشن سازه  <i class="fas fa-solid fa-location-dot"></i></a>
+            <a class="text-focus-in single-page-portal-op-btn" href="#"> تماس با اپراتور <i class="fas fa-solid fa-user-tie"></i></a>
+            <a class="text-focus-in single-page-portal-back-btn" href="/pics">بازگشت به گالری  <i class="fas fa-solid fa-turn-up"></i></a>
+        </div>
+
+
+
+    </div>
+
+
+</div>
+

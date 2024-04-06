@@ -1,0 +1,286 @@
+@font-face {
+    font-family: 'cheshmak';
+    src: url('/Prem-Nova/assets/fonts/Digi/Cheshmak.ttf') format('truetype');
+}
+body {
+    font-size: 16px;
+    overflow: hidden;
+    background: #0088f7;
+    animation: changeBg 60s infinite alternate;
+}
+.bubble{
+    z-index: -2;
+}
+@keyframes changeBg {
+    0% {
+        background: #0065fd;
+   }
+    20% {
+        background: #0098fd;
+   }
+    40% {
+        background: #00a2ff;
+   }
+    60% {
+        background: #09b7fc;
+   }
+    80% {
+        background: #2AF598;
+   }
+}
+/*** <--- PARTICLES ---> ***/
+.bottom-particles {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+.bottom-particles .bubble {
+    opacity: 0;
+    position: absolute;
+    bottom: -1rem;
+    width: 1rem;
+    height: 1rem;
+    background-color: rgb(255, 255, 255);
+    border-radius: 50%;
+}
+.bottom-particles .bubble:nth-child(1) {
+    left: 17%;
+    animation: blow 5000ms infinite;
+    animation-delay: 214ms;
+}
+.bottom-particles .bubble:nth-child(2) {
+    left: 32%;
+    animation: blow 5000ms infinite;
+    animation-delay: 3359ms;
+}
+.bottom-particles .bubble:nth-child(3) {
+    left: 88%;
+    animation: blow 12768ms infinite;
+    animation-delay: 1564ms;
+}
+.bottom-particles .bubble:nth-child(4) {
+    left: 80%;
+    animation: blow 11896ms infinite;
+    animation-delay: 3590ms;
+}
+.bottom-particles .bubble:nth-child(5) {
+    left: 94%;
+    animation: blow 10741ms infinite;
+    animation-delay: 7347ms;
+}
+.bottom-particles .bubble:nth-child(6) {
+    left: 68%;
+    animation: blow 8882ms infinite;
+    animation-delay: 6791ms;
+}
+.bottom-particles .bubble:nth-child(7) {
+    left: 80%;
+    animation: blow 5000ms infinite;
+    animation-delay: 5435ms;
+}
+.bottom-particles .bubble:nth-child(8) {
+    left: 35%;
+    animation: blow 10644ms infinite;
+    animation-delay: 8794ms;
+}
+.bottom-particles .bubble:nth-child(9) {
+    left: 15%;
+    animation: blow 7672ms infinite;
+    animation-delay: 5986ms;
+}
+.bottom-particles .bubble:nth-child(10) {
+    left: 85%;
+    animation: blow 5000ms infinite;
+    animation-delay: 6040ms;
+}
+.bottom-particles .bubble:nth-child(11) {
+    left: 9%;
+    animation: blow 14891ms infinite;
+    animation-delay: 5835ms;
+}
+.bottom-particles .bubble:nth-child(12) {
+    left: 47%;
+    animation: blow 12211ms infinite;
+    animation-delay: 10665ms;
+}
+.bottom-particles .bubble:nth-child(13) {
+    left: 78%;
+    animation: blow 5000ms infinite;
+    animation-delay: 8922ms;
+}
+.bottom-particles .bubble:nth-child(14) {
+    left: 35%;
+    animation: blow 5000ms infinite;
+    animation-delay: 10572ms;
+}
+.bottom-particles .bubble:nth-child(15) {
+    left: 25%;
+    animation: blow 13196ms infinite;
+    animation-delay: 1379ms;
+}
+.bottom-particles .bubble:nth-child(16) {
+    left: 21%;
+    animation: blow 9431ms infinite;
+    animation-delay: 10655ms;
+}
+.bottom-particles .bubble:nth-child(17) {
+    left: 90%;
+    animation: blow 6730ms infinite;
+    animation-delay: 1821ms;
+}
+.bottom-particles .bubble:nth-child(18) {
+    left: 63%;
+    animation: blow 9847ms infinite;
+    animation-delay: 11097ms;
+}
+.bottom-particles .bubble:nth-child(19) {
+    left: 30%;
+    animation: blow 5000ms infinite;
+    animation-delay: 7722ms;
+}
+.bottom-particles .bubble:nth-child(20) {
+    left: 31%;
+    animation: blow 10886ms infinite;
+    animation-delay: 11586ms;
+}
+@keyframes blow {
+    0% {
+        opacity: 0;
+        transform: translate(0, 0);
+   }
+    20% {
+        opacity: 1;
+   }
+    100% {
+        opacity: 0;
+        transform: translate(0, -100vh) scale(0.2);
+   }
+}
+
+.top-bar{
+    overflow: hidden;
+    background-color: #333;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: white;
+    padding: 10px;
+    box-shadow: 10px 4px 24px #333 ;
+    z-index: 2;
+}
+.brand{
+    float: right;
+    margin-right: 15px;
+}
+.li-btn {
+    list-style-type: none;
+   
+}
+.li-btn a{
+    text-decoration: none;
+    color: #009EFD;
+    font-size: 18px;
+    
+}
+.right-bck{
+    background-color: #272727;
+    position: absolute;
+    overflow: hidden;
+    width: 50%;
+    height: 100%;
+    right: 0;
+    z-index:-1;
+    opacity: 68%;
+
+}
+.countainer{
+    
+    
+    position: absolute;
+    overflow: hidden;
+    width: 50%;
+    height:100%;
+    right: 0;
+    bottom: auto;
+    z-index: 0;
+
+
+}
+.countainer h2{
+    margin-top: 70px;
+    text-align: center;
+    color: #fff;
+}
+.input-ctn{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 5fr;
+    
+    position: absolute;
+    width: 60%;
+    left : 20%;
+}
+.form-input{
+     text-align: right;
+    outline: none;
+    background: none;
+    border: none;
+    border-bottom:  #fff solid 1px;
+    color: #fff;
+    margin-top: 25px;
+    padding: 10px;
+    transition: .25s;
+}
+
+.form-input:focus{
+    border: none;
+    border-bottom: #fff solid 3px;
+    background: none;
+}
+.form-input::placeholder{
+    color: #fff;
+}
+.btn-ctn{
+    margin-top:40px;
+}
+.btn{
+    position: relative;
+    left: 40%;
+    width:20%;
+    border: none;
+    background-color: #009EFD ;
+    color: #fff;
+    padding: 8px;
+    margin-top: 25pxs;
+    border-radius: 12px;
+    transition: .5s;
+} 
+.btn:hover {
+    background: #03e9f4;
+    color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 5px #03e9f4,
+                0 0 25px #03e9f4,
+                0 0 50px #03e9f4,
+                0 0 100px #03e9f4;
+  }
+  .form-ctn p{
+      text-align: right;
+      color: #fff;
+  }
+.form-ctn p a{
+    text-decoration: none;
+    color: #009EFD;
+    transition: .25s;
+
+}
+.form-ctn p a:hover{
+    text-shadow: 0 0 5px #03e9f4,
+    0 0 25px #03e9f4,
+    0 0 50px #03e9f4,
+    0 0 100px #03e9f4; 
+}
+
+

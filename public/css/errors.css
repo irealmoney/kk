@@ -1,0 +1,121 @@
+
+body{
+  padding:  0;
+  margin: 0;
+  /* position: relative; */
+}
+
+h1{
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    text-align: center;
+}
+
+.error-c{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    /* height: 100%; */
+    position: absolute;
+    top: 50%;
+    right: 0;
+    left: 50%;
+    transform: translate(-50% , -50%);
+  }
+  .error-c img{
+    width: 250px; 
+    height: auto;
+  }
+
+
+  
+  @media screen and (min-width: 768px) and (max-width: 991px) {
+    .error-c h1 {
+      min-height: 56px;
+    }
+  }
+
+
+
+
+
+
+  
+  html, body {
+    margin: 0;
+    padding: 0;
+  }
+  
+  .flex-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: white;
+    animation: colorSlide 15s cubic-bezier(0.075, 0.82, 0.165, 1) infinite;
+  }
+  .text-center , h1 , h3 {
+    margin: 10px;
+    cursor: default;
+    text-align: center;
+  }
+  .fade-in {
+    animation: fadeIn 2s ease infinite;
+  }
+      
+  
+  h1 {
+    font-size: 8em;
+    transition: font-size 200ms ease-in-out;
+    border-bottom: 1px solid white;
+
+    span#digit1 { animation-delay: 200ms; }
+    span#digit2 { animation-delay: 300ms; }
+    span#digit3 { animation-delay: 400ms; }
+  }
+      
+    button {
+      border: 1px solid white;
+      background: transparent;
+      outline: none;
+      padding: 10px 20px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: white;
+      text-transform: uppercase;
+      transition: background-color 200ms ease-in;
+      margin: 20px 0;
+    }
+ 
+  
+  @keyframes colorSlide {
+    0% { background-color: #152a68; }
+    25% { background-color: #e41f1f; }
+    50% { background-color: #940707; }
+    75% { background-color: #b34f4f;}
+    100% { background-color: #68152a; }
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    };
+    100% {
+      opacity: 1;
+    }
+  }
+
+  .return-home{
+    text-decoration: none;
+    background-color: #ffffff;
+    color: #000000;
+    padding: 10px 15px;
+    margin-top: 15px;
+    border-radius: 12px;
+    transition: 0.5s;
+    font-weight: bold;
+  }
+  .return-home:hover{
+    background-color: #aaaaaa;
+
+  }

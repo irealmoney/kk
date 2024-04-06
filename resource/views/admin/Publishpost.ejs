@@ -1,0 +1,66 @@
+<div id="addpost" class="tabcontent">
+    <form class="addpost-form" method="POST" action="/admin/panel/addpost" enctype="multipart/form-data" novalidate>
+
+
+        <%- include(viewPath('layouts/error-messages')) -%>
+
+                                <h2>افزودن سازه به گالری</h2>
+        <div class="inp-c2">
+            <div class="input-box1">
+
+            </div>
+        </div>
+        <div class="inp-c2">
+            <div class="input-box1">
+
+                <label for="billboardTitle">عنوان :</label>
+                <input type="text" id="billboardTitle" name="title" >
+
+                <label for="location-link">لینک لوکیشن سازه را وارد کنید (با فرمت iframe):</label>
+                <input type="text" id="location-link" name="location">
+
+                <label for="billboard-type">نوع تابلو :</label>
+                <select name="type" id="billboard-type">
+                    <option value="استوری برد">استوری برد</option>
+                    <option value="بیلبورد">بیلبورد</option>
+                    <option value="عرشه پل">عرشه پل</option>
+                </select>
+
+                <label for="billboard-status">وضعیت تابلو :</label>
+                <select name="status" id="billboard-status">
+                    <option value="قابل اکران">قابل اکران</option>
+                    <option value="در حال اکران">در حال اکران</option>
+                </select>
+
+                <label for="width">طول سازه : </label>
+                <input type="text"  name="width" id="width" placeholder="طول سازه ...">
+            </div>
+
+            <div class="input-box2">
+
+                <label for="billboard-pic">عکس سازه را انتخاب کنید :</label>
+                <input type="file" id="billboard-pic" name="image" placeholder="عکس سازه را وارد کنید">
+                
+
+                <label for="billboard-address">آدرس سازه را وارد کنید :</label>
+                <input type="text" id="billboard-address" name="address">
+
+                <label for="billboard-code">کد تابلو را وارد کنید :</label>
+                <input type="text" id="billboard-code" name="code">
+
+                <label for="billboard-tag">تگ پست را وارد کنید</label>
+                <input type="text" id="billboard-tag" name="tags">
+
+                <label for="height">عرض سازه : </label>
+                <input type="text"  name="height" id="height" placeholder="عرض سازه ...">
+            </div>
+        </div>
+        <div class="inp-c3">
+            <div class="input-box3">
+                <input type="submit" id="addpost-submit-btn" name="addpost_btn" value="Publish">
+            </div>
+        </div>
+    </form>
+
+
+</div>

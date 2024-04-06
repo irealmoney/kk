@@ -1,0 +1,147 @@
+
+
+
+<div class="bill-list-title">
+
+    <h1>تصاویر سازه ها</h1>
+    <p style="color: #fff;">مشاهده لوکیشن اطلاعات سازه های محیطی</p>
+
+</div>
+
+
+
+
+
+
+
+<div class="container">
+
+
+    <div class="filter-container">
+        <form class="filter-form" method="get" action="/pics">
+
+            <div class="filter-title"><img src="/images/settings-sliders.svg" width="26px" height="26px" alt="ic1"><h2>فیلتر ها</h2></div>
+
+             
+            <%
+
+            let {search , filter , state } = req.query;
+
+            %>
+
+            <div class="filter-section">
+                <div class="sort-radio">
+                    <p>مرتب سازی براساس :</p>
+                        <select name="filter" id="sort-box">
+                            <option value="all" <%= filter === 'all' ? 'selected' : '' %> > هیچکدام</option>
+                            <option value="view" <%= filter === 'view' ? 'selected' : '' %> > پر بازدیدترین</option>
+                            <option value="lovely" <%= filter === 'lovely' ? 'selected' : '' %> > محبوب ترین</option>
+                            <option value="newest" <%= filter === 'newest' ? 'selected' : '' %> > جدیدترین</option>
+                        </select>
+                </div>
+                <div class="state-checkbox">
+
+                    <p>استان مورد نظر را انتخاب کنید :</p>
+                    
+                        <select name="state" id="filter-box">
+                            <option value="all" <%= state === 'all' ? 'selected' : '' %> >همه استان ها</option>
+                            <option value="مازندران" <%= state === 'مازندران' ? 'selected' : '' %> >مازندران</option>
+                            <option value="گیلان" <%= state === 'گیلان' ? 'selected' : '' %> >گیلان</option>
+                            <option value="گلستان" <%= state === 'گلستان' ? 'selected' : '' %> >گلستان</option>
+                            <option value="تهران" <%= state === 'تهران' ? 'selected' : '' %> >تهران</option>
+                            <option value="اصفهان" <%= state === 'اصفهان' ? 'selected' : '' %> >اصفهان</option>
+                            <option value="تبریز" <%= state === 'تبریز' ? 'selected' : '' %> >تبریز</option>
+                        </select>
+
+                </div>
+                
+
+            </div>
+
+            <div class="sub-btn">
+                <a href="/pics<%= search ? '?search=' + search : '' %>"><i class="fas fa-solid fa-trash-can"></i></a>
+                <input type="submit"  value="اعمال">
+            </div>
+
+            <div class="search--box--container">
+                <div class="search--section">
+
+
+                    <button type="submit"><i class=" fas fa-solid fa-magnifying-glass"></i></button>
+                    <input type="hidden" name="s" value="<%= search %>">
+                    <input type="text" id="searchbox" name="search" placeholder="اینجا جستوجو کن ...">
+                </div>
+            </div>
+        </form>
+
+        <% if(search) { %>
+            <span>عبارت جستوجو شده : <i style="color: red;"> <%= search %> </i><a class="btn btn-default btn-sm" href="/pics<%= filter ? '?filter=' + filter : '' %><%= state ? '&state=' + state : '' %>">حذف</a></span>
+        <% } %>
+    </div>
+
+
+    
+    <div class="service--items row AdjustRow">
+        <div class="services" data-scroll-reveal="group">
+
+            <%CPage.docs.forEach(CPage => {%>
+                        <div class="service--item col-md-4 col-xs-6 ">
+                            
+                            <div class="service--content">
+                                <img class="pic--rel--like--view" src="<%= CPage.images[720] %>" alt="">
+                                <div class="like--fav--view">
+                                    <form action="/pics/like/<%= CPage._id %>" method="post">
+                                    
+                                        <button class="like----btn" type="submit" value=""><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" id="Filled" viewBox="0 0 24 24" width="512" height="512"><path d="M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Z"/></svg>
+                                        </button>  
+                                           
+  
+                                            <br><%= CPage.likes %>
+                                        </a>
+                                    </form>
+                                    <a>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" id="view"><path d="M16 7.98c-3.787 0-7.223 1.046-9.77 2.81C3.684 12.551 2 15.1 2 17.98a1 1 0 1 0 2 0c0-2.105 1.216-4.056 3.37-5.546C9.521 10.943 12.584 9.98 16 9.98c3.415 0 6.48.963 8.633 2.454C26.786 13.924 28 15.875 28 17.98a1 1 0 1 0 2 0c0-2.88-1.682-5.428-4.229-7.19C23.225 9.025 19.787 7.98 16 7.98Z" color="#000" font-family="sans-serif" font-weight="400" overflow="visible" style="line-height:normal;font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-feature-settings:normal;text-indent:0;text-align:start;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000;text-transform:none;text-orientation:mixed;shape-padding:0;isolation:auto;mix-blend-mode:normal"></path><path d="M16 13.98c-2.75 0-5 2.25-5 5s2.25 5 5 5 5-2.25 5-5-2.25-5-5-5zm0 2c1.669 0 3 1.332 3 3 0 1.67-1.331 3-3 3s-3-1.33-3-3c0-1.668 1.331-3 3-3z" color="#000" font-family="sans-serif" font-weight="400" overflow="visible" style="line-height:normal;font-variant-ligatures:normal;font-variant-position:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-alternates:normal;font-feature-settings:normal;text-indent:0;text-align:start;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000;text-transform:none;text-orientation:mixed;shape-padding:0;isolation:auto;mix-blend-mode:normal"></path></svg>
+                                        <br><%= CPage.views %>
+                                    </a>
+                                </div>
+                                <h1 class="h3"><%= CPage.typeOfPosts() %></h1>
+                                <div class="textbar-body">
+                                    <ul>
+                                        <li class="address-flex">موقعیت سازه :  <span style="color: red;"><%= CPage.address %></span> </li>
+
+                                    </ul>
+
+                                    <ul class="status-value">
+                                        <li>وضعیت : <%= CPage.statusValue() %></li>
+                                    </ul> 
+                                    <ul class="status-align">
+                                        <% if(CPage.statusValue() === 'در حال اکران') { %>
+                                            <li> برند در حال اکران : <span style="color: red;"><%= CPage.title %></span></li>
+                                        <% } else { %>
+                                            <li> <span style="color: #02ca4f">تابلو خالی است </span> </li>
+                                        <% } %>
+                                    </ul>
+                                </div>
+                                <div class="bills-buttons">
+                                    <a class="btn btn-default btn-sm" href="<%= CPage.location %>">لوکیشن سازه</a>
+                                    <div>
+                                        <!-- <input type="button" onclick="openinfoBox(event , 'H2')" value="اطلاعات بیشتر" id="loc-btn" class="btn btn-success btn-sm bc-green"> -->
+                                        <a class="btn btn-success btn-sm bc-green" href="/pics/<%= CPage._id %>">اطلاعات بیشتر</a>
+                                    </div>
+                                </div>
+                                <p class="text-muted" style="direction: ltr; text-align: center;"><%= date(CPage.createdAt).format('jYYYY jM jD') %> آخرین بروزرسانی</p>                              
+                            </div>
+                        </div>
+
+
+
+
+        <%})%>
+        </div>
+    </div>
+
+
+    <%- include(viewPath('layouts/pagination') , {pages : CPage.pages , page : CPage.page}) -%>
+</div>
+
+

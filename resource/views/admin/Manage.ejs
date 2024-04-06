@@ -1,0 +1,48 @@
+<div id="manage" class="tabcontent">
+
+
+
+
+
+    <h2>سازه های آپلود شده در سایت </h2>
+
+
+
+    <div class="table-count-admin">
+        <table>
+
+            <tr>
+                <td>عنوان سازه</td>
+                <td>کد سازه</td>
+                <td>آدرس سازه</td>
+                <td>نوع سازه</td>
+                <td>ابعاد</td>
+                <td>وضعیت تابلو</td>
+                <td>تعداد بازدید</td>
+                <td>تنظیمات</td>
+            </tr>
+                <%CPage.docs.forEach(CPage => {%>
+                    <tr>
+                        <td><%= CPage.title %></td>
+                        <td><%= CPage.code %></td>
+                        <td><%= CPage.address %></td>
+                        <td><%= CPage.typeOfPosts() %></td>
+                        <td><%= CPage.height %>*<%= CPage.width %></td>
+                        <td><%= CPage.statusValue() %></td>
+                        <td><%= CPage.views %></td>
+                        <td>
+                            <form class="post-edit-rmv" action="/admin/panel/manageposts/<%= CPage._id %>?_method=DELETE" method="post">
+                                <input type="hidden" name="_method" value="delete">
+                                <a href="/admin/panel/manageposts/<%= CPage._id %>/edit">ویرایش</a>
+                                <button type="submit">حذف</button>
+                            </form>
+                        </td>
+                    </tr>
+                <%})%>
+        </table>
+
+    </div>
+
+    <%- include(viewPath('layouts/pagination') , {pages : CPage.pages , page : CPage.page}) -%>
+
+</div>

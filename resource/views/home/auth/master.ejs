@@ -1,0 +1,41 @@
+<link rel="stylesheet" href="/public/css/sweetalert2.min.css">
+
+
+
+
+
+
+
+
+<%- body %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="/js/sweetalert2.all.min.js"></script>
+
+
+<% let sweetalert = req.flash('sweetalert') %>
+
+<% if(sweetalert.length) { %>
+   <% let data = sweetalert[0];%>
+    <script>
+        Swal.fire({
+            icon: "<%= data.type %>",
+            title: "<%= data.title %>",
+            text: "<%= data.message %>",
+            showConfirmButton : true,
+            confirmButtonText : '<a style="color: #fff;" href="#">ok</a>'
+        });
+    </script>
+
+<% } %>

@@ -1,0 +1,95 @@
+<div id="manage" class="tabcontent">
+
+
+
+
+    <h2>مدیریت کاربران</h2>
+
+
+
+<div class="table-count-admin2">
+
+    <table class="users--table--manage">
+        <thead>
+            <tr>
+                <td>نام و نام خانوادگی</td>
+                <td>نام کاربری</td>
+                <td>ایمیل</td>
+                <td>شماره موبایل</td>
+                <td>تاریخ عضویت</td>
+                <td>دسترسی</td>
+                <td>سطوح دسترسی</td>
+                <td>تنظیمات</td>
+            </tr>
+        </thead>
+        <tbody>
+
+            <%users.docs.forEach(user => {%>
+                
+             
+                <tr>
+                    <td><%= user.name %></td>
+                    <td><%= user.username %></td>
+                    <td><%= user.email %></td>
+                    <td><%= '0' + user.phone %></td>
+                    <td><%= date(user.createdAt).format('jD,jMMMM,jYYYY') %></td>
+                    <% if(user.admin == true) {%>
+                        <td>ادمین</td>
+                        <% } else {%>
+                        <td>کاربر</td>
+                        <% } %>
+                    <td>
+                            <% user.roles.forEach(role => {%>
+                                    <%= ' - '  +  role.lable  +  ' - ' %>
+                            <% }) %>
+                    </td>
+                    <td>
+                        <form class="post-edit-rmv" action="/admin/panel/users/<%= user._id %>?_method=DELETE" method="post">
+                            <input type="hidden" name="_method" value="delete">
+                            <%if(user.admin == true) {%>
+                            <a class="edit--btn"  href="/admin/panel/users/<%= user._id %>/toggleadmin">لغو مدیریت</a>
+                            <a class="edit--btn" href="/admin/panel/users/<%= user._id %>/addrole">ایجاد دسترسی</a>
+                            <%} else {%>
+                            <a class="edit--btn"  href="/admin/panel/users/<%= user._id %>/adminaccess">مدیریت</a>
+                            <% } %>
+                            
+                            <% if(! user.admin == true) {%>
+                            <button class="delete--btn" type="submit">حذف</button>
+                            <% } %>
+                        </form>
+                    </td>
+                </tr>
+                
+            <%})%>
+        </tbody>
+    </table>
+    <%- include(viewPath('layouts/pagination') , {pages : users.pages , page : users.page}) -%>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
