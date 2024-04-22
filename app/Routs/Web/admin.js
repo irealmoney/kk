@@ -41,7 +41,7 @@ router.get('/panel/addpost' , gate.can('add-posts') , PublishpostController.post
 router.post('/panel/addpost', Upload.single('image') , convertFileToField.handle , PublishPostValidator.handle() , PublishpostController.publish)
 
 //Management
-router.get('/panel/manageposts' ,  gate.can('add-posts')  , ManagementController.showPanel); 
+router.get('/panel/manageposts' , ManagementController.showPanel); 
 router.delete('/panel/manageposts/:id' ,  gate.can('delete-posts') , PublishpostController.destroy);
 router.get('/panel/manageposts/:id/edit' , gate.can('edit-posts') , PublishpostController.edit);
 router.put('/panel/manageposts/:id', Upload.single('image') , convertFileToField.handle , PublishPostValidator.handle() , PublishpostController.update);
