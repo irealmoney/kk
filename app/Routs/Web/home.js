@@ -21,9 +21,9 @@ const ForgotPasswordValidator = require('app/http/Validators/ForgotPasswordValid
 const ResetPasswordValidator = require('app/http/Validators/ResetPasswordValidator')
 const commentValidator = require('app/http/Validators/commentValidator')
 // middleware 
-const RedirectIfAuthenticated = require('app/http/middleware/RedirectIfAuthenticated');
-const RedirectIfNotAdmin = require('app/http/middleware/RedirectIfNotAdmin');
-const RedirectIfNotAuthenticated = require('app/http/middleware/RedirectIfNotAuthenticated')
+const RedirectIfAuthenticated = require('app/http/Middleware/RedirectIfAuthenticated');
+const RedirectIfNotAdmin = require('app/http/Middleware/RedirectIfNotAdmin');
+const RedirectIfNotAuthenticated = require('app/http/Middleware/RedirectIfNotAuthenticated')
 
 
 router.get('/' , homeController.index);

@@ -2,9 +2,9 @@ const express = require('express');
 const router = express.Router();
 
 //middleware 
-const RedirectIfAuthenticated = require('app/http/middleware/RedirectIfAuthenticated');
-const RedirectIfNotAdmin = require('app/http/middleware/RedirectIfNotAdmin');
-const ErrorHandler = require('app/http/middleware/ErrorHandler');
+const RedirectIfAuthenticated = require('app/http/Middleware/RedirectIfAuthenticated');
+const RedirectIfNotAdmin = require('app/http/Middleware/RedirectIfNotAdmin');
+const ErrorHandler = require('app/http/Middleware/ErrorHandler');
 
 
 
