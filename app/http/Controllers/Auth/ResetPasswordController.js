@@ -1,6 +1,6 @@
 const controller = require('app/http/Controllers/Controller')
 const passport = require('passport')
-const PasswordReset = require('app/models/password-reset')
+const PasswordReset = require('app/Models/password-reset')
 const User = require('../../../Models/user');
 const uniqueString = require('unique-string');
 
