@@ -274,7 +274,7 @@ WE MAY RELEASE FUTURE UPDATES SO IT WILL OVERWRITE THIS FILE. IT'S BETTER AND SA
     .header--nav.collapsing,
     .header--nav.collapse.in {
         display: block !important;
-        margin-top: 83px;
+        margin-top: 76px;
     }
     .header--nav.collapse.in {
         overflow-y: auto !important;
@@ -1241,8 +1241,8 @@ WE MAY RELEASE FUTURE UPDATES SO IT WILL OVERWRITE THIS FILE. IT'S BETTER AND SA
         padding: 0;
     }
     .logoes-footage img{
-        width: 75px;
-        height: 75px;
+        margin: 0 10px;
+        height: 32px;
     }
 
     .footer--title{

@@ -10031,13 +10031,15 @@ transition: 0.5s;
 .logoes-footage ul {
     list-style-type: none;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     padding: 0;
 }
 
 .logoes-footage img {
     margin: 10px 0;
+    
+    height: 32px;
 }
 
 /* 30.1. FOOTER WIDGETS */
@@ -10071,7 +10073,6 @@ transition: 0.5s;
 }
 
 .footer--widget {
-    margin-bottom: 35px;
     display: flex;
     flex-direction: column;
     align-items: center;
