@@ -10027,7 +10027,6 @@ transition: 0.5s;
     align-items: center;
 
 }
-
 .logoes-footage ul {
     list-style-type: none;
     display: flex;
@@ -10035,7 +10034,6 @@ transition: 0.5s;
     align-items: center;
     padding: 0;
 }
-
 .logoes-footage img {
     margin: 10px 0;
     height: 32px;
