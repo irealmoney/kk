@@ -10021,12 +10021,7 @@ transition: 0.5s;
     background-color: #d71920;
 }
 
-.logoes-footage {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
 
-}
 .logoes-footage ul {
     list-style-type: none;
     display: flex;
