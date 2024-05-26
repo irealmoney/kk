@@ -10842,7 +10842,7 @@ td {
     outline: 0;
   }
   [role="tab"][aria-selected="true"]:not(:focus):not(:hover)::before {
-    border-top: 5px solid hsl(218, 96%, 48%);
+    border-top: 5px solid #d71920;
   }
   [role="tab"][aria-selected="true"]::after {
     position: absolute;
@@ -10851,7 +10851,8 @@ td {
     right: 0;
     left: 0;
     height: 0.3em;
-    background: hsl(220, 43%, 99%);
+    background: none;
+    border: 3px solid #d71920;
     box-shadow: none;
     content: '';
   }
@@ -10871,8 +10872,9 @@ td {
     z-index: 2;
     padding: 1em;
     border-radius: 0 0.2em 0.2em 0.2em;
-    background: #63e7eb7c;
+    background: #f7f7f7;
     border-radius: 26px 0 26px 26px;
+    border: 2px dashed #d71920;
   }
   [role="tabpanel"] p {
     margin: 0;

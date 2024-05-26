@@ -1,9 +1,11 @@
 const express = require('express');
 const router = express.Router();
 
-const apiv1 = require('./api-v1/index')
+const ForAll = require('./public');
+const ForUser = require('./private');
 
 
-router.use('/api/v1' , apiv1);
+router.use(ForAll);
+
 
 module.exports = router;
