@@ -23,9 +23,9 @@ async Posts(req , res , next){
 
 async singlePost(req , res , next){
     try{
-        this.isMongoID(req.params.id)
 
-        let post = await Posts.findById(req.params.id).populate([
+
+        let post = await Posts.findByIdAndUpdate(req.params.post).populate([
                                                         {
                                                             path : 'user' , 
                                                             select : 'name'
@@ -36,7 +36,7 @@ async singlePost(req , res , next){
         
        
 
-        if(!post) this.error('چنین پستی وجود ندارد' , 404);
+        if(!post) this.failed('چنین پستی وجود ندارد' , res , 404);
 
         res.json({
             data : post ,

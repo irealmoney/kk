@@ -25,6 +25,7 @@
     "express-recaptcha": "^5.1.0",
     "express-session": "^1.15.6",
     "express-validator": "^5.2.0",
+    "jsonwebtoken": "^9.0.2",
     "method-override": "^3.0.0",
     "mkdirp": "^0.5.6",
     "moment-jalali": "^0.3.9",
