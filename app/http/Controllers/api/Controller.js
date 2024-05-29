@@ -12,6 +12,21 @@ const User = require('app/Models/user')
 
         autobind(this);     
     }
+
+    async validationData(req , res){
+        const result = validationResult(req);
+        if(! result.isEmpty()){
+
+            const errors = result.array();
+            const messages = [];
+            errors.forEach(err => messages.push(err.msg));
+
+                this.failed(messages , res , 403)
+                return false;
+            
+        }
+        return true;
+    }
   
     failed(msg , res , statusCode = 500){
         res.status(statusCode).json({

@@ -5,6 +5,9 @@ const jwt = require('jsonwebtoken')
 class AuthController extends controller{
 
     async Login(req ,res){
+
+        if(! await this.validationData(req , res)) return;
+
         passport.authenticate('local.login' , {session : false} , (err , user) => {
             if(err) return this.failed(err.message , res , 500)
             if(!user) return this.failed('چنین کاربری وجود ندارد' , res , 404)

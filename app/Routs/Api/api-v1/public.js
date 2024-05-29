@@ -6,6 +6,7 @@ const router = express.Router();
 const PostController = require('app/http/Controllers/api/v1/PostController')
 const AuthController = require('app/http/Controllers/api/v1/AuthController')
 
+//Validator
 const LoginValidator = require('app/http/Validators/LoginValidator');
 
 router.get('/posts' , PostController.Posts)
