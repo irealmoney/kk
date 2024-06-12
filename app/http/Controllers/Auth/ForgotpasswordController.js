@@ -37,8 +37,24 @@ class ForgotPasswordController extends controller{
             })
 
         await newPasswordReset.save();
-                // req.flash('success' , 'ایمیل بازیابی رمز عبور با موفقیت انجام شد');
-                res.redirect('/');
+
+
+
+
+
+
+
+
+
+
+        
+        this.AlertAndBack(req , res , {
+            title : '  موفق  ' , 
+            message :  'لینک به ایمیل شمال اراسل شد' , 
+            type : 'success' , 
+            button : 'تایید' , 
+            timer : 5000
+        })
         }
     }
 }

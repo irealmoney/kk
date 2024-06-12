@@ -83,4 +83,6 @@ const User = require('app/Models/user')
         this.alert(req, data);
         this.back(req , res)
     }
+
+
 }
