@@ -116,9 +116,9 @@
                                     </ul> 
                                     <ul class="status-align">
                                         <% if(CPage.statusValue() === 'در حال اکران') { %>
-                                            <li> برند در حال اکران : <span style="color: red;"><%= CPage.title %></span></li>
+                                            <li> برند در حال اکران : <span style="color: red;"><%= CPage.tag %></span></li>
                                         <% } else { %>
-                                            <li> <span style="color: #02ca4f">تابلو خالی است </span> </li>
+                                            <li>وضعیت :<span style="color: #02ca4f"> <%= CPage.statusValue() %> </span></li>
                                         <% } %>
                                     </ul>
                                 </div>
