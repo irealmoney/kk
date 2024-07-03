@@ -3,8 +3,8 @@ const passport = require('passport')
 const PasswordReset = require('app/Models/password-reset')
 const User = require('../../../Models/user');
 const uniqueString = require('unique-string');
-
-
+const nodemailer = require('nodemailer');
+const mail = require('app/helpers/mail')
 
 class ForgotPasswordController extends controller{
     showForgotForm(req , res){
@@ -41,20 +41,38 @@ class ForgotPasswordController extends controller{
 
 
 
+            const mailOption = {
+                from: '"آژانس تبلیغاتی ما 👻" <magency67@gmail.com>', // sender address
+                to: `${newPasswordReset.email}`, // list of receivers
+                subject: "بازیابی کلمه عبور", // Subject line
+                text: "Hello world?", // plain text body
+                html: `
+                <h2>بازیابی کلمه عبور</h2>
+
+                <p>برای بازیابی کلمه عبور خود بر روی لینک زیر کلیک کنید</p>
+
+                <a href="http://localhost:8080/auth/password/${newPasswordReset.token}">بازیابی</a>
+                ` // html body
+              };
 
 
+              mail.sendMail(mailOption , (err , info) => {
+                if(err) console.log(err)
 
+                console.log("message send : %s" , info);
+
+                this.alert(req , {
+                    title : 'توجه'  , 
+                    message : 'لینک بازیابی رمزعبور برای شما ارسال شد' , 
+                    type : 'success' , 
+                    timer : 3000
+                })
+              })
 
 
 
         
-        this.AlertAndBack(req , res , {
-            title : '  موفق  ' , 
-            message :  'لینک به ایمیل شمال اراسل شد' , 
-            type : 'success' , 
-            button : 'تایید' , 
-            timer : 5000
-        })
+              res.redirect('/auth/login');
         }
     }
 }
