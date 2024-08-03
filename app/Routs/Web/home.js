@@ -62,7 +62,8 @@ router.get('/logout' , (req , res)=>{
     res.clearCookie('remember_Token')
     res.redirect('/auth/login')
 })
-
+//user activation
+router.get('/user/activation/:code' , UserPanelController.activation )
 
 // sitemap
 router.get('/sitemap.xml' , homeController.sitemap);

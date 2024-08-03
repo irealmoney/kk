@@ -1,6 +1,6 @@
-const controller = require('app/http/Controllers/Controller')
+const middleware = require('./middleware');
 
-class ErrorHandler extends controller{
+class ErrorHandler extends middleware{
 
 
     error404(req, res , next){

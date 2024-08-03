@@ -67,5 +67,6 @@
                 <input type="submit" id="addpost-submit-btn" name="addpost_btn" value="ثبت">
             </div>
         </div>
+        <input type="hidden" name="_csrf" value="<%= req.csrfToken() %>">
     </form>
 </div>

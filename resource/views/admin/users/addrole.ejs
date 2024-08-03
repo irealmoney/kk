@@ -26,8 +26,9 @@
                     <option value="<%= role._id %>" <%= old('roles' , user.roles).indexOf(role._id) !== -1 ? 'selected' : '' %> > <%=  role.lable %> </option>    
                     <% }) %>
                 </select>
+            
             </div>
-
+            <input type="hidden" name="_csrf" value="<%= req.csrfToken() %>">
             <input class="btn btn-success btn-sm bc-green" type="submit" value="تایید" >
         </form>
     </div>

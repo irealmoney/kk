@@ -19,8 +19,9 @@
                 <input type="text" name="name" id="permission--name" >
             </div>
             <div class="inp--box1">
-                <label for="permission--lable">     توضیح دسترسی   :   </label>
+                <label for="permission--lable">     توضیح دسترسی  (فارسی) :   </label>
                 <input type="text" name="lable" id="permission--lable" >
+                <input type="hidden" name="_csrf" value="<%= req.csrfToken() %>">
             </div>
 
             <input class="btn btn-success btn-sm bc-green" type="submit" value="تایید" >

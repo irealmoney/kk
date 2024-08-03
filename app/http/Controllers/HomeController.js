@@ -2,7 +2,6 @@ const controller = require('app/http/Controllers/Controller');
 const Posts = require('app/Models/posts');
 const User = require('app/Models/user')
 const { createSitemap } = require('sitemap');
-const { post } = require('../../Routs/Web/home');
 const RSS = require('rss');
 
 class homeController extends controller{
@@ -55,7 +54,7 @@ class homeController extends controller{
 
             let feed = new RSS({
                 title : 'فید خوان پست های آژانس تبلیغاتی ما' , 
-                description : 'سازه های جدید را ازسریق rss ببینید' ,
+                description : 'سازه های جدید را ازطریق rss ببینید' ,
                 feed_url : `https://localhost:8080/feed/pics` ,
                 site_url : `https://localhost:8080`
             })

@@ -67,7 +67,7 @@
  
         <form class="admin-form" method="POST" action="/auth/register" novalidate>
 
-            <%- include(viewPath('layouts/error-messages')) -%>
+
 
             <img src="/images/recommender-03.png" width="84px" height="84px" alt="">
             <h2>ساخت حساب کاربری</h2>
@@ -75,6 +75,8 @@
                 <div class="input-flex-r">
                     <div class="MD-login-input">
 
+                        <input type="hidden" name="_csrf" value="<%= req.csrfToken() %>">
+                        
                         <p><label for="name">نام و نام خانوادگی  </label></p>
                         <input type="text" id="name" name="name" value="<%= old('name') %>">
 

@@ -14,8 +14,30 @@ const { check } = require('express-validator/check');
 const Helpers = require('./helper');
 const rememberLogin = require('app/http/Middleware/RememberLogin');
 const expressLayouts = require('express-ejs-layouts');
+const helmet = require('helmet')
 var methodOverride = require('method-override')
 const gate = require('app/helpers/gate')
+const csrf = require('csurf');
+
+const expressLimit = require('express-rate-limit')
+const ApiLimiter = new expressLimit({
+    windowMs : 1000 * 60 * 3 , 
+    max : 180 , 
+    handler : function(req , res){
+        res.json({
+            data : 'به دلیل درخواست های تکراری اطلاعات شما تا 5 دقیقه ارسال نمیشود' ,
+            status : 'error'
+        })
+    }
+
+})
+// csrf handler 
+const csrfErrorHandler = require('app/http/middleware/csrfErrorHandler');
+const { handler } = require('./http/Middleware/ErrorHandler');
+
+
+//Active Users Midlleware
+const activeUser = require('app/http/middleware/activeUser');
 
 // // "app-module-path": "^2.2.0",
 // // "auto-bind": "^1.2.0",
@@ -73,10 +95,16 @@ module.exports = class Application {
         app.set('layout extreactStyle', true);
         app.set("layout" , 'home/master')
 
-
+        app.use(
+            helmet({
+       contentSecurityPolicy: false,
+        crossOriginResourcePolicy: false,
+        crossOriginEmbedderPolicy: false,
+            }));
         app.use(bodyparser.json());
         app.use(bodyparser.urlencoded({ extended : true }));
         app.use(session({
+            name : 'ma_Ads' ,
             secret : 'arashmorad65' , 
             resave  : true , 
             saveUninitialized : true , 
@@ -95,10 +123,16 @@ module.exports = class Application {
         next();
         });
         app.use(gate.middleware());
+        app.use(ApiLimiter);
     }
 
+
+
     setRouters() {
+        app.use(activeUser.handle)
         app.use(require('app/Routs/Api/index'));
-        app.use(require('app/Routs/Web/mainRout'));   
+        app.use(csrf({cookie : true}) , require('app/Routs/Web/mainRout'));  
+        app.use(csrfErrorHandler.handle) 
+
     }
 }

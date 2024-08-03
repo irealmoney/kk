@@ -23,11 +23,11 @@ const User = require('app/Models/user')
                 this.recaptcha.verify(req , (err , data) => {
                     if(err) {
 
-                        return this.AlertAndBack(req , res , {
-                            title : 'ریکپچا ناموفق' , 
+                        return this.alert(req , {
+                            title : 'توجه'  , 
                             message : 'لطفا گزینه من ربات نیستم را فعال کنید' , 
                             type : 'error' , 
-                            button : 'تایید'
+                            timer : 6000
                         })
 
                     } else resolve(true);

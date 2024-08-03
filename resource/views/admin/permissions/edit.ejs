@@ -19,10 +19,12 @@
                 <input type="text" name="name" id="permission--name" value="<%= old('name' , permission.name)%>" >
             </div>
             <div class="inp--box1">
-                <label for="permission--lable">     توضیح دسترسی   :   </label>
+                <label for="permission--lable">     توضیح دسترسی (فارسی) :   </label>
                 <input type="text" name="lable" id="permission--lable" value="<%= old('lable' , permission.lable)%>" >
             </div>
             <div class="inp--box2">
+                <input type="hidden" name="_csrf" value="<%= req.csrfToken() %>">
+
                 <input  type="submit" value="ویرایش" >
                 <a href="/admin/panel/users/permissions">بازگشت</a>
             </div>

@@ -6,6 +6,7 @@ const MongoosePaginate = require('mongoose-paginate');
 
 const UserSchema = Schema({
     name : { type : String , required : true } , 
+    active : { type : Boolean , default : false } , 
     admin : { type : Boolean , default : 0 } , 
     roles : [{type : Schema.Types.ObjectId , ref : 'Role'}] ,
     username : { type : String , unique : true , require : true} ,

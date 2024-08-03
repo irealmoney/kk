@@ -68,11 +68,13 @@
         <form class="admin-form" method="POST" action="/auth/login" novalidate>
 
  
-            <%- include(viewPath('layouts/error-messages')) -%>
+
 
 
             <img src="/images/recommender-03.png" width="84px" height="84px" alt="">
             <h2>ورود به پنل کاربری</h2>
+
+            <input type="hidden" name="_csrf" value="<%= req.csrfToken() %>">
 
             <div class="MD-login-input">
                 <p><label for="username">نام کاربری </label></p>
@@ -81,7 +83,7 @@
             <div class="MD-login-input">
 
                 <p><label for="password">رمز عبور </label></p>
-                <input type="password" id="password" name="password" value="<%= old('password') %>">
+                <input type="password" id="password" name="password" value="<%= old('username') %>">
             </div>
 
 
@@ -99,7 +101,7 @@
 
 
             <div class="MD-login-input">
-                <%- recaptcha%>
+                <%- recaptcha %>
             </div>
 
             <div class="login-btn">
